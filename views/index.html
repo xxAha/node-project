@@ -1,0 +1,158 @@
+{{ extend './layout/layout.html' }}
+
+{{ block 'style' }}
+
+{{ /block }}
+
+
+{{ block 'content' }}
+
+<div class="fly-panel fly-column">
+    <div class="layui-container">
+      <ul class="layui-clear">
+        <li class="layui-hide-xs  layui-this"><a href="/">首页</a></li>
+        <li> <a href="/column/quiz/"> 提问 </a> </li>
+        <li> <a href="/column/share/"> 分享 <span class="layui-badge-dot"></span> </a> </li>
+        <li> <a href="/column/discuss/"> 讨论 </a> </li>
+        <li> <a href="/column/suggest/"> 建议 </a> </li>
+        <li> <a href="/column/notice/"> 公告 </a> </li>
+        <li> <a href="/column/news/"> 动态 </a> </li>
+      </ul>
+      <div class="fly-column-right layui-hide-xs"> <span class="fly-search LAY_search"><i class="layui-icon"></i></span>
+        <a href="/jie/add/" class="layui-btn">发表新帖</a> </div>
+      <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;">
+        <a href="/jie/add/" class="layui-btn">发表新帖</a> </div>
+    </div>
+  </div>
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8">
+      <div class="fly-panel layui-hide-xs">
+        <div class="layui-row fly-panel-main" style="padding: 15px;">
+          <div class="layui-carousel fly-topline" id="FLY_topline" lay-anim="fade" lay-indicator="inside" lay-arrow="hover"
+            style="width: 100%; height: 195px;">
+            <div carousel-item="">
+              <div class="layui-this"> <a href="https://fly.layui.com/store/layuiHomeMall/" target="_blank">
+                <img src="//cdn.layui.com/upload/2018_11/168_1542355168024_20170.jpg" alt="layui 简约家居商城模板"> </a> </div>
+              <div class=""> <a href="https://fly.layui.com/store/" target="_blank"> 
+                <img src="//cdn.layui.com/upload/2018_11/168_1541613155215_39468.jpg" alt="layui 模板应用市场"> </a> </div>
+              <div class=""> <a href="https://fly.layui.com/store/layuiQuietBlog/" target="_blank">
+                <img src="//cdn.layui.com/upload/2018_11/168_1541751893206_4867.jpg" alt="layui 静谧风格个人博客模板"> </a> </div>
+            </div>
+            <div class="layui-carousel-ind">
+              <ul>
+                <li class="layui-this"></li>
+                <li class=""></li>
+                <li class=""></li>
+              </ul>
+            </div><button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button class="layui-icon layui-carousel-arrow"
+              lay-type="add"></button>
+          </div>
+        </div>
+      </div>
+      <div class="fly-panel">
+        <div class="fly-panel-title fly-filter">
+          <a>置顶</a>
+          <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right" id="LAY_goSignin" style="color: #FF5722;">去签到</a>
+        </div>
+        <ul class="fly-list">
+          <li>
+            <a href="/u/12661320" class="fly-avatar"> 
+              <img src="/img/avatar/default.jpg" alt="智慧的小西瓜">
+            </a>
+            <h2> <a class="layui-badge">分享</a> <a href="/jie/43868/">layui 扩展组件 dtree 2.4.5 发布</a> </h2>
+            <div class="fly-list-info"> <a href="/u/12661320" link=""> <cite>智慧的小西瓜</cite> <i class="layui-badge fly-badge-vip">VIP4</i>
+              </a> <span>2018-11-11 </span> <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i>
+                80</span> <span class="fly-list-nums"> <i class="iconfont icon-pinglun1" title="回答"></i> 139 </span>
+            </div>
+            <div class="fly-list-badge"> <span class="layui-badge layui-bg-red">精帖</span> </div>
+          </li>
+        </ul>
+      </div>
+      <div class="fly-panel" style="margin-bottom: 0;">
+        <div class="fly-panel-title fly-filter">
+          <a href="/column/all/" class="layui-this">综合</a>
+          <span class="fly-mid"></span>
+          <a href="/column/all/unsolved/">未结</a>
+          <span class="fly-mid"></span>
+          <a href="/column/all/solved/">已结</a>
+          <span class="fly-mid"></span>
+          <a href="/column/all/wonderful/">精华</a>
+        </div>
+        <ul class="fly-list">
+          <li> 
+            <a href="/u/28542696" class="fly-avatar"> 
+              <img src="/img/avatar/default.jpg" alt="董大人">
+            </a>
+            <h2>
+              <a class="layui-badge">提问</a>
+              <a href="/jie/44475/">单页版为什么没有类、工程包？</a>
+            </h2>
+            <div class="fly-list-info">
+              <a href="/u/28542696" link="">
+                <cite>董大人</cite>
+                <i class="layui-badge fly-badge-vip">VIP3</i>
+              </a>
+              <span>1小时前</span>
+              <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻">
+                <i class="iconfont icon-kiss"></i> 20
+              </span>
+              <span class="fly-list-nums">
+                <i class="iconfont icon-pinglun1" title="回答"></i> 1 
+              </span>
+            </div>
+            <div class="fly-list-badge"> </div>
+          </li>
+          
+        </ul>
+        <div style="text-align: center">
+          <div class="laypage-main"> <a href="/column/all/page/2/" class="laypage-next">更多求解</a> </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4">
+      <div class="fly-panel fly-signin">
+        <div class="fly-panel-title"> 签到 <i class="fly-mid"></i> <a href="javascript:;" class="fly-link" id="LAY_signinHelp">说明</a>
+          <i class="fly-mid"></i> <a href="javascript:;" class="fly-link" id="LAY_signinTop">活跃榜<span class="layui-badge-dot"></span></a>
+          <span class="fly-signin-days"></span> </div>
+        <div class="fly-panel-main fly-signin-main"> <button class="layui-btn layui-btn-danger" id="LAY_signin">今日签到</button>
+        </div>
+      </div>
+
+      <div class="fly-panel fly-rank fly-rank-reply" id="LAY_replyRank">
+        <h3 class="fly-panel-title">回贴周榜</h3>
+        <dl>
+          <dd><a href="/u/2515632"><img src="//q.qlogo.cn/qqapp/101235792/00C50E710E23362475E6A35AACB1CEEB/100"><cite>Zlheb</cite><i>93次回答</i></a></dd>
+          11次回答</i></a></dd>
+        </dl>
+      </div>
+      <dl class="fly-panel fly-list-one"> <dt class="fly-panel-title">本周热议</dt>
+        <dd> <a href="/jie/44106/">插件tree</a> <span><i class="iconfont icon-pinglun1"></i> 23</span> </dd>
+        
+      </dl>
+
+      <div class="fly-panel" style="padding: 20px 0; text-align: center;"> <img src="//cdn.layui.com/upload/2017_8/168_1501894831075_19619.jpg"
+          style="max-width: 100%;" alt="layui">
+        <p style="position: relative; color: #666;">微信扫码关注 layui 公众号</p>
+      </div>
+      <div class="fly-panel fly-link">
+        <h3 class="fly-panel-title">友情链接</h3>
+        <dl class="fly-panel-main">
+          <dd><a href="http://layim.layui.com/" target="_blank">WebIM</a></dd>
+          <dd> </dd>
+
+          <dd><a href="javascript:;" onclick="layer.alert('发送邮件至：xianxin@layui-inc.com<br> 邮件标题为：申请Fly社区友链', {title:'申请友链'});"
+              class="fly-link">申请友链</a></dd>
+          <dd> </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+{{ /block }}
+
+
+{{ block 'script' }}
+
+{{ /block }}
