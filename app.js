@@ -6,6 +6,7 @@ const logger = require('koa-logger')
 const router = require('./routers/router')
 const body = require('koa-body')
 const session = require('koa-session')
+var compress = require('koa-compress')
 
 
 
@@ -28,6 +29,12 @@ const CONFIG = {
 
 //配置日志模块
 //app.use(logger())
+
+app.use(compress({
+  
+ threshold: 2048, //这里的单位是字节，大于2kb就压缩
+ flush: require('zlib').Z_SYNC_FLUSH
+}))
 
 //配置session
 app.use(session(CONFIG, app));
