@@ -636,3 +636,7 @@ body .fly-user-main{position: relative; min-height: 600px;}
 @media screen and (max-width: 992px) {
   body .header .layui-nav .layui-nav-item{margin: 0 5px;}
 }
+
+.layui-nav-item:hover .layui-nav-child  {
+  display: block;
+}

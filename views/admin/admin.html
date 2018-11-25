@@ -1,0 +1,40 @@
+{{ extend '../layout/layout.html' }}
+
+{{ block 'style' }}
+
+{{ /block }}
+
+
+{{ block 'content' }}
+<div class="layui-container fly-marginTop fly-user-main">
+  <ul id="admin-nav" class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
+    {{ if session.role > 1}}
+    <li class="layui-nav-item "> <a href="/admin/center"> <i class="layui-icon"></i> 用户管理 </a> </li>
+    {{ /if }}
+    <li class="layui-nav-item "> <a href="/admin/center"> <i class="layui-icon"></i> 个人中心 </a> </li>
+    <li class="layui-nav-item "> <a href="/admin/seting"> <i class="layui-icon"></i> 基本设置 </a> </li>
+    <li class="layui-nav-item "> <a href="/admin/article"> <i class="iconfont icon-tiezi"></i> 我的文章 </a> </li>
+    <li class="layui-nav-item "> <a href="/admin/comment"> <i class="layui-icon"></i> 我的评论 </a> </li>
+
+    </li><span class="layui-nav-bar" style="top: 302.5px; height: 0px; opacity: 0;"></span>
+  </ul>
+  <div class="site-tree-mobile layui-hide"> <i class="layui-icon"></i></div>
+  <div class="site-mobile-shade"></div>
+  {{ block 'admin-content' }}
+
+  {{ /block }}
+ 
+
+{{ /block }}
+
+
+{{ block 'script' }}
+<script>
+  
+  // $('#admin-nav .layui-nav-item').click(function () {
+  //   $('#admin-nav .layui-nav-item').removeClass('layui-this')
+  //   $(this).addClass('layui-this')
+  // })
+
+</script>
+{{ /block }}

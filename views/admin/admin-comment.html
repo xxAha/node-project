@@ -1,0 +1,123 @@
+{{ extend './admin.html' }}
+
+
+{{ block 'admin-content' }}
+
+<div class="fly-panel fly-panel-user" pad20="">
+  <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_uc">
+    <ul class="layui-tab-title" id="LAY_mine">
+      <li data-type="mine-jie" lay-id="index" class="layui-this">我发的评论</li>
+      <!-- <li data-type="collection" data-url="/collection/find/" lay-id="collection">我收藏的帖</li> -->
+    </ul>
+    <div class="layui-tab-content" id="LAY_ucm" style="padding: 5px 0;">
+      <div class="layui-tab-item layui-show">
+        <table class="layui-hide" id="LAY_mySendCard"></table>
+        <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-1" lay-id="LAY_mySendCard"
+          style="">
+          <div class="layui-table-box" id="comments-table">
+            <table class="layui-table" style="text-align: center;">
+              <colgroup>
+                <col width="200">
+                <col width="313">
+                <col width="200">
+                <col width="200">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th style="text-align: center;">文章标题</th>
+                  <th style="text-align: center;">评论内容</th>
+                  <th style="text-align: center;">评论时间</th>
+                  <th style="text-align: center;">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{ each comList }}
+                <tr>
+                  <td>{{ $value.article.title }}</td>
+                  <td>{{ $value.content }}</td>
+                  <td>{{ $value.created.toLocaleString() }}</td>
+                  <td>
+                    <button data-comment-id="{{$value._id}}" data-article-id="{{$value.article._id}}" class="del-btn layui-btn layui-btn-danger">删除</button>
+                  </td>
+                </tr>
+                {{ /each }}
+
+
+              </tbody>
+            </table>
+            <!-- <table class="layui-table" lay-data="{ url:'/user/comments', page:true, id:'idTest'}", lay-filter="demo" >
+    
+                <thead>
+                  <tr>
+                    <th lay-data="{width: 200,field:'article',align:'center',templet: res => res.article.title}">被评文章</th>
+                    <th lay-data="{width: 312,field:'content',align:'center'}">评论内容</th>
+                    <th lay-data="{width: 200,field:'created',align:'center', templet: res => (new Date(res.created)).toLocaleString()}">评论时间</th>
+                    <th lay-data="{width: 200,field:'article',hide: true,align:'center',templet: res => res.article._id}">id</th>
+                    <th lay-data="{width: 200,fixed: 'right', align:'center', toolbar: '<button>删除</button>'}">操作</th>
+                  
+                  </tr>
+                </thead>
+              </table> -->
+          </div>
+          <div class="layui-table-page layui-hide">
+            <div id="layui-table-page1"></div>
+          </div>
+          <style>
+
+          </style>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{{ /block }}
+
+{{ block 'script' }}
+<script>
+  $('.del-btn').click(function (event) {
+    const articleId = event.currentTarget.dataset.articleId.replace(/"/g, '')
+    const commentId = event.currentTarget.dataset.commentId.replace(/"/g, '')
+
+    const num = layer.confirm("确认删除？", () => {
+      layer.close(num)
+      $.ajax({
+        url: '/comment/' + commentId,
+        method: 'delete',
+        data: {
+          articleId
+        },
+        success: function (data) {
+          if (data.state) {
+            layer.msg('删除成功', {
+              anim: 1,
+              time: 800
+            }, () => {
+              location.reload()
+            })
+          }
+        }
+
+      })
+
+
+    })
+  })
+
+
+
+  // window.onload = function () {
+
+  //   const articleArr = []
+  //   $('#comments-table .layui-table-main .layui-table tr .layui-hide div').each((index, item) => {
+  //     articleArr.push($(item).html())
+  //   })
+
+  //   $('#comments-table .layui-table-fixed-r .layui-table-body tr').click(function () {
+
+  //   })
+  // }
+</script>
+
+{{ /block }}

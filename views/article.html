@@ -1,0 +1,148 @@
+{{ extend './layout/layout.html' }}
+
+{{ block 'style' }}
+
+{{ /block }}
+
+
+{{ block 'content' }}
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8 content detail">
+      <div class="fly-panel detail-box">
+        <input type="hidden" id="article-id" data-article-id="{{article._id}}">
+        <h1>{{article.title}}</h1>
+        <div class="fly-detail-info"> <span class="layui-badge layui-bg-green fly-detail-column"> {{article.tip}}
+          </span> <span class="layui-badge" style="background-color: #999;">未结</span>
+          <div class="fly-admin-box" data-id="44771"> </div> <span class="fly-list-nums"> <a href="#comment"><i class="iconfont"
+                title="回答"></i> 0</a> <i class="iconfont" title="人气"></i> 32 </span>
+        </div>
+        <div class="detail-about"> <a class="fly-avatar" href="/u/29350944/"> <img src="{{article.author.avatar}}" alt="贺大锤">
+          </a>
+          <div class="fly-detail-user"> <a href="/u/29350944/" class="fly-link"> <cite>{{article.author.username}}</cite>
+            </a> <span>{{article.created.toLocaleString()}}
+            </span>
+          </div>
+          <div class="detail-hits" id="LAY_jieAdmin" data-id="44771"> <span style="padding-right: 10px; color: #FF7200">悬赏：20飞吻</span>
+            <span class="layui-btn layui-btn-xs jie-admin " type="collect" data-type="add">收藏</span></div>
+        </div>
+        <div class="detail-body layui-text photos">
+            {{article.content}}
+        </div>
+      </div>
+      <div class="fly-panel detail-box" id="flyReply">
+        <fieldset class="layui-elem-field layui-field-title" style="text-align: center;">
+          <legend>回帖</legend>
+        </fieldset>
+        <ul class="jieda" id="jieda">
+          {{ each comments }}
+          <li data-id="151069"> <a name="item-1542983356168"></a>
+            <div class="detail-about detail-about-reply"> <a class="fly-avatar" href="/u/168/"> <img src="{{$value.from.avatar}}"
+                  alt="贤心"> </a>
+              <div class="fly-detail-user"> <a href="/u/168/" class="fly-link"> <cite>{{$value.from.username}}</cite> <i class="iconfont icon-renzheng"
+                    title="认证信息：layui 作者"></i> </a> <span style="color:#5FB878">(管理员)</span> </div>
+              <div class="detail-hits"> <span>{{$value.created.toLocaleString()}}</span> </div>
+            </div>
+            <div class="detail-body layui-text jieda-body photos">
+              {{$value.content}}
+            </div>
+          </li>
+          {{ /each }}
+        </ul>
+        <div style="text-align: center"> </div> <a name="comment"> </a>
+        <div class="layui-form layui-form-pane">
+          <form action="/jie/reply/" method="post">
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block">
+                <div class="layui-unselect fly-edit"><span type="face" title="表情"><i class="iconfont icon-yxj-expression"
+                      style="top: 1px;"></i></span><span type="picture" title="图片：img[src]"><i class="iconfont icon-tupian"></i></span><span
+                    type="href" title="超链接格式：a(href)[text]"><i class="iconfont icon-lianjie"></i></span><span type="quote"
+                    title="引用"><i class="iconfont icon-yinyong" style="top: 1px;"></i></span><span type="code" title="插入代码"
+                    class="layui-hide-xs"><i class="iconfont icon-emwdaima" style="top: 1px;"></i></span><span type="hr"
+                    title="水平线">hr</span><span type="preview" title="预览"><i class="iconfont icon-yulan1"></i></span></div>
+                <textarea id="L_content" name="content" required="" lay-verify="required" placeholder="请输入内容" class="layui-textarea fly-editor"
+                  style="height: 150px;"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item"> <input type="hidden" name="jid" value="44791"> <input type="hidden" name="daPages"
+                value="1"> <button class="layui-btn" lay-filter="*" lay-submit="">提交回复</button> </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div class="layui-col-md4">
+      <dl class="fly-panel fly-list-one"> <dt class="fly-panel-title">本周热议</dt>
+        <dd> <a href="/jie/44456/">layui表格，单元格可编辑时，单击进入编辑状态如何获取此时的单元格值？</a> <span><i class="iconfont icon-pinglun1"></i>
+            37</span> </dd>
+        <dd> <a href="/jie/44720/">laytable异步接口请求参数不是JSON</a> <span><i class="iconfont icon-pinglun1"></i> 24</span>
+        </dd>
+        <dd> <a href="/jie/44534/">flow 无法被加载</a> <span><i class="iconfont icon-pinglun1"></i> 19</span> </dd>
+        <dd> <a href="/jie/44685/">layui表格编辑按钮弹窗如何多个列一起弹出来修改？</a> <span><i class="iconfont icon-pinglun1"></i> 17</span>
+        </dd>
+        <dd> <a href="/jie/44718/">请求上传接口出现异常--项目上线后</a> <span><i class="iconfont icon-pinglun1"></i> 17</span> </dd>
+        <dd> <a href="/jie/44650/">怎样导出自定义表格，不是excel那种</a> <span><i class="iconfont icon-pinglun1"></i> 15</span> </dd>
+        <dd> <a href="/jie/44737/">upload上传图片,第一次上传获取不到值</a> <span><i class="iconfont icon-pinglun1"></i> 15</span>
+        </dd>
+        <dd> <a href="/jie/44412/">关于table获取选中数据的问题</a> <span><i class="iconfont icon-pinglun1"></i> 12</span> </dd>
+        <dd> <a href="/jie/44333/">嵌入评分后，不能进行点击</a> <span><i class="iconfont icon-pinglun1"></i> 12</span> </dd>
+        <dd> <a href="/jie/44783/">发现一个半BUG 手动滑稽</a> <span><i class="iconfont icon-pinglun1"></i> 12</span> </dd>
+      </dl>
+      <div class="fly-panel">
+        <div class="fly-panel-title"> 心级赞助商 <span style="padding: 0 3px;">-</span> <a href="/jie/15697/" class="fly-link fly-joinad    ">我要加入</a>
+        </div>
+        <div class="fly-panel-main"> <a href="https://www.renren.io/layui" target="_blank" rel="nofollow" class="fly-zanzhu"
+            style="background-color: #4BAE4F;" time-limit="2019-09-08 0:0:0"> 人人开源 - 企业级后台脚手架框架 </a> </div>
+      </div>
+      <div class="fly-panel">
+        <div class="fly-panel-title"> 官方产品 </div>
+        <div class="fly-panel-main"> <a href="http://www.layui.com/admin/?from=fly" target="_blank" class="fly-zanzhu"
+            time-limit="2017.09.25-2099.01.01" style="background-color: #20222A; background-image: linear-gradient(to right,#20222A,#3E4251);">layuiAdmin
+            - layui 官方后台管理模板</a> <a href="http://layim.layui.com/?from=fly" target="_blank" class="fly-zanzhu"
+            time-limit="2017.09.25-2099.01.01" style="background-color: #009688; background-image: linear-gradient(to right,#009688,#5FB878);">LayIM
+            - layui 即时通讯旗舰之作</a> </div>
+      </div>
+      <div class="fly-panel" style="padding: 20px 0; text-align: center;"> <img src="//cdn.layui.com/upload/2017_8/168_1501894831075_19619.jpg"
+          style="max-width: 100%;" alt="layui">
+        <p style="position: relative; color: #666;">微信扫码关注 layui 公众号</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{ /block }}
+
+
+{{ block 'script' }}
+<script>
+  
+  $('#flyReply .layui-btn').click( (event) => {
+  
+    event.preventDefault()
+    const content = $('#L_content').val().trim()
+    const article = $('#article-id').attr('data-article-id').replace(/"/g, '')
+    const postData = {
+      article,
+      content
+    }
+   
+    if (content) {
+      
+      $.post('/comment', postData, function (data) {
+        
+        layer.msg(data.msg, {
+          time: 1000,
+          end: function () {
+
+            window.location.reload()
+          }
+        })
+        // $('#L_content').val('')
+        // layer.msg('发表成功')
+      })
+    }
+
+   
+  })
+</script>
+{{ /block }}
